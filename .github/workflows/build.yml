@@ -35,10 +35,12 @@ jobs:
           sudo apt-get install libevdev-dev libudev-dev libglibmm-2.4-dev nlohmann-json3-dev zlib1g-dev ninja-build cmake
       - name: Execute build
         run: | 
+          mkdir artifacts
           mkdir build && cd build
           cmake -GNinja .. 
           ninja
           ls -al
+          mv evdevhook ../artifacts
       - name: Upload build
         run: |
             ls -al artifacts/
