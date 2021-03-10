@@ -40,7 +40,7 @@ jobs:
           cmake -GNinja .. 
           ninja
           ls -al
-          zip ../artifacts/evdevhook.zip evdevhook ../config_templates/*.json
+          zip -j ../artifacts/evdevhook.zip evdevhook ../config_templates/*.json
       - name: Upload build
         run: |
             ls -al artifacts/
