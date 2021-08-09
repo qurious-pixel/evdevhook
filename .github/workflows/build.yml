@@ -41,11 +41,16 @@ jobs:
           ninja
           ls -al
           zip -j ../artifacts/evdevhook.zip evdevhook ../config_templates/*.json
-      - name: Upload build
-        run: |
-            ls -al artifacts/
-            wget -c https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz
-            tar xfv ghr_v0.13.0_linux_amd64.tar.gz      
-            ghr_v0.13.0_linux_amd64/ghr -recreate -n 'DualSense build' -b "GitHub https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" dualsense artifacts/
-    
-        
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        continue-on-error: true
+        with:
+          name: DualSense
+          path: artifacts
+      #- name: Upload build
+      #  run: |
+      #      ls -al artifacts/
+      #      wget -c https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz
+      #      tar xfv ghr_v0.13.0_linux_amd64.tar.gz      
+      #      ghr_v0.13.0_linux_amd64/ghr -recreate -n 'Nightly-PR test build' -b "GitHub https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" nightly-pr artifacts/
+  
