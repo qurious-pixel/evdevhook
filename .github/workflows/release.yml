@@ -1,0 +1,11 @@
+name: GitHub Linux Release
+
+on:
+  workflow_run:
+    workflows: [DualSense,Dualshock4]
+    branches: [nightly-pr]
+    types:
+      - completed
+
+      - name: Execute build
+        run: echo "success"
