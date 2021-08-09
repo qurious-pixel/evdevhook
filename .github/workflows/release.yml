@@ -7,5 +7,9 @@ on:
     types:
       - completed
 
-      - name: Execute build
-        run: echo "success"
+jobs:
+  releases:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Execute build
+      run: echo "success"
