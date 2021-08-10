@@ -2,7 +2,7 @@ name: GitHub Linux Release
 
 on:
   workflow_run:
-    #workflows: [DualSense,DualShock4]
+    workflows: [DualSense,DualShock4]
     branches: [nightly-pr]
     types:
       - completed
@@ -13,3 +13,10 @@ jobs:
     steps:
     - name: Execute build
       run: echo "success"
+
+    - uses: actions/checkout@v2
+
+    - uses: actions/download-artifact@v2
+
+    - name: Display structure of downloaded files
+      run: ls -R
