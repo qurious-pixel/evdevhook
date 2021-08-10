@@ -34,4 +34,4 @@ jobs:
         repo: ${{github.repository}}
 
     - name: Display structure of downloaded files
-      run: ls -
+      run: ls -R
