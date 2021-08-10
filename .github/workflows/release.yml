@@ -2,7 +2,7 @@ name: GitHub Linux Release
 
 on:
   workflow_run:
-    workflows: [DualSense,DualShock4]
+    #workflows: [DualSense,DualShock4]
     branches: [nightly-pr]
     types:
       - completed
