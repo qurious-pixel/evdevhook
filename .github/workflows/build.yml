@@ -40,16 +40,14 @@ jobs:
         run: | 
           meson setup --buildtype=release -Db_lto=true --prefix=/usr build
           meson compile -C build
-          echo "ls build"
-          ls -al build
-          echo "ls build/src"
-          ls -al build/src
+          mkdir artifacts
+          cp build/src/evdevhook2 artifacts/
           #zip -j ../artifacts/evdevhook.zip evdevhook ../config_templates/*.json
-      #- name: Upload build
-      #  run: |
-      #      ls -al artifacts/
-      #      wget -c https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz
-      #      tar xfv ghr_v0.13.0_linux_amd64.tar.gz      
-      #      ghr_v0.13.0_linux_amd64/ghr -recreate -n 'DualSense build' -b "GitHub https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" evdevhook2 artifacts/
+      - name: Upload build
+        run: |
+            ls -al artifacts/
+            wget -c https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz
+            tar xfv ghr_v0.13.0_linux_amd64.tar.gz      
+            ghr_v0.13.0_linux_amd64/ghr -recreate -n 'DualSense build' -b "GitHub https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" evdevhook2 artifacts/
     
         
