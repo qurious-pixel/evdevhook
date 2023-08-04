@@ -40,8 +40,10 @@ jobs:
         run: | 
           meson setup --buildtype=release -Db_lto=true --prefix=/usr build
           meson compile -C build
-          ls -al
+          echo "ls build"
           ls -al build
+          echo "ls build/src"
+          ls -al build/src
           #zip -j ../artifacts/evdevhook.zip evdevhook ../config_templates/*.json
       #- name: Upload build
       #  run: |
